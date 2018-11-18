@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animation</title>
+    <style>
+
+      #container {
+        width: 600px;
+        margin: 10% auto;
+        text-align: center;
+      }
+
+      #animation {
+        width:500px;
+        margin: 0 auto;
+      }
+   
+      #myCanvas2 {
+        float: left;
+      }
+
+      button {
+        width: 100px;
+        height: 40px;
+        border: 3px outset #55a8a2;
+        border-radius: 40%;
+        margin-top: 2%;
+        background-color: #208e87;
+        font-size: 25px;
+        font-weight: bold;
+        color: #064c47;
+      }
+
+      button:hover {
+        cursor: pointer;
+        background-color: #6be5dd;
+        border-color: #b5fffa;
+      }
+
+    </style>
+  </head> 
+  <body> 
+    <div id="container">
+      <div id="animation">
+        <canvas id="myCanvas" width="244" height="254">
+          К сожалению, ваш браузер не поддерживает технологию canvas 
+        </canvas> 
+        <canvas id="myCanvas2" width="244" height="254">
+        </canvas>
+      </div>
+      <button id="myButton" onclick="startAnimation()">Start!</button>
+    </div>
+    <script> 
+
+      /*Write a client web application consisting of a frog 
+      and a large number of mosquitoes in the browser window. 
+      Implement the following functionality:
+      * Drag the mosquito to the frog
+      * When the mosquito moves to the frog, it opens its mouth and it eats it.
+      * The frog must eat all the mosquitoes.*/
+
+    
+
+    function startAnimation() {
+      
+      var width = 244,
+        height = 254,
+        frames = 20,
+
+        currentFrame = 0,
+        canvas = document.getElementById("myCanvas");
+      var context = canvas.getContext("2d");
+
+      var image = new Image();
+        image.src = "frog.png";
+ 
+      var draw = function() {
+        context.clearRect(0, 0, width, height);
+        context.drawImage(image, width * currentFrame, 0, width, height, 0, 0, width, height);
+
+       if (currentFrame == frames) {
+          currentFrame = 0;
+        } 
+        else {
+          currentFrame++;
+        }
+      }
+ 
+      setInterval(draw, 300);
+
+      
+
+ 
+      var width2 = 244,
+        height2 = 254,
+        frames2 = 20,
+
+        currentFrame2 = 0,
+        canvas2 = document.getElementById("myCanvas2");
+      var context2 = canvas2.getContext("2d");
+
+      var image2 = new Image();
+        image2.src = 'mosquitoes.png';
+ 
+      var draw2 = function() {
+        context2.clearRect(0, 0, width2, height2);
+        context2.drawImage(image2, width2 * currentFrame2, 0, width2, height2, 0, 0, width2, height2);
+ 
+        if (currentFrame2 == frames2) {
+          currentFrame2 = 0;
+        } 
+        else {
+          currentFrame2++;
+        }
+      }
+
+      setInterval(draw2, 300);
+
+    }
+
+//Пока получается только так
+
+
+    </script> 
+
+  </body> 
+</html>
